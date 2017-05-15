@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HlsValidator.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../logo.png'/>
+  <script type='text/javascript' src='../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>HLS3\src\main\java\edu\psgv\sweng861\HlsValidator.java</caption>
+    <tr>
+      <td class='line'>1</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l1s0'>//Author: Victor Azurin</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>2</td><td>&nbsp;</td>
+      <td><pre class='comment'>//Purpose: To validate a URL in the HLS context</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>3</td><td>&nbsp;</td>
+      <td><pre class='comment'>//Version number: v0.1</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>5</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package edu.psgv.sweng861;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.net.*;
+import java.io.*;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='comment'>// main class - contains all business logic</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>17</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l17s0'>public class HlsValidator {</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>19</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l19s0'>	private static final Logger logger = LogManager.getLogger();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l20s0'>	protected enum PlaylistType {SINGLE, MASTER, NONE};</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x3</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public static void main(String[] args) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
+        <span class='uncovered' onclick="showPath(this,'l23s0 l29s0 l32s0 l36s0 l46s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l23s0 l29s0 l30s0 l36s0 l46s0')">B: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>23</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l23s0'>		logger.info(">>main()");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>24</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l24s0'>		ArrayList&lt;String> InputURLList = new ArrayList&lt;String>();</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>25</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l25s0'>		ArrayList&lt;Playlist> MasterListPlaylist = new ArrayList&lt;Playlist>();</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>26</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l26s0'>		System.out.println("HLS Validator: Version v0.3");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>28</td><td>&nbsp;</td>
+      <td><pre class='comment'>		//getUserInput will ask users single lines in case a batch file was not input</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>29</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l29s0' title='Executions: 0' class='uncovered'>if (args.length != 0)</span>{</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l30s0'>			InputURLList = getUserInputBatch(args[0]);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l31s0'>		} else {</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l32s0'>			InputURLList = getUserInputLine();	</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>33</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='comment'>		//System.out.println(InputURLList);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l36s0'>		logger.info("This are the URLs input by the user {}", InputURLList);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='comment'>		//Process list of user URLs</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l39s0'>		MasterListPlaylist = ProcessURLList(InputURLList);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='comment'>		//call validator</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l42s0'>		InvokeValidator(MasterListPlaylist);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>44</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l44s0'>		logger.info("&lt;&lt;main()");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l45s0'>		System.out.println("Program Terminated");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l46s0'>	}</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>48</td><td>&nbsp;</td>
+      <td><pre class='comment'>	//getUserInput for batch file</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected static ArrayList&lt;String> getUserInputBatch(String string) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td>&nbsp;</td>
+      <td><pre class='comment'>        //if batch mode, then ask for path to file</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>		String batchFile = string;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l52s0'>		Scanner s = null;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l53s0'>    	ArrayList&lt;String> list = new ArrayList&lt;String>();</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>55</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l55s0'>    	System.out.println("input batch file: " + batchFile );</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l56s0'>  		logger.info("input batch file: {}", batchFile);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>57</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>58</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l58s0'>			s = new Scanner(new File(batchFile));</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>59</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l59s0'>		} catch (FileNotFoundException e) {</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>60</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l60s0'>			logger.debug("File not found - batch mode: {}", batchFile);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>61</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l61s0'>			System.err.println("FileNotFoundException error. Please enter a valid Batch file. Exiting program...");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>64</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l64s0'>    	while (s.hasNext()){</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>65</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l65s0'>    	    list.add(s.next());</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>66</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>67</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l67s0'>    	s.close();</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>69</td><td>&nbsp;</td>
+      <td><pre class='comment'>        // returning list with contents of batch file</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>70</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l70s0'>		return list;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>73</td><td>&nbsp;</td>
+      <td><pre class='comment'>	//get user input in case ther is no batch file</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected static ArrayList&lt;String> getUserInputLine() {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>1</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
+        <span class='covered' onclick="showPath(this,'l75s0 l85s0 l88s0 l90s0 l91s0')">A: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l75s0 l85s0 l86s0 l90s0 l91s0')">B: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>75</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l75s0'>    	System.out.println("Please enter URL one at a time");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>76</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l76s0'>  		String UserInputURL = null;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>77</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l77s0'>		Scanner scanner = new Scanner(System.in);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>78</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l78s0'>  		boolean LastInput = false;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>79</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l79s0'>  		ArrayList&lt;String> listLineByLine = new ArrayList&lt;String>();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		do {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>81</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l81s0'>			System.out.println("Please enter next URL, or type \"end\" to stop:");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>82</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l82s0'>			UserInputURL = scanner.nextLine();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>83</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l83s0'>			logger.info("Line-by-line input URLs: {}", UserInputURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>84</td><td>&nbsp;</td>
+      <td><pre class='comment'>			//checking if User wants to exit program</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>85</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>			<span id='l85s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>if (UserInputURL.equals("end"))</span>{</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l86s0'>				LastInput = true;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>87</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l87s0'>			} else {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>88</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l88s0'>				listLineByLine.add(UserInputURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>89</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>90</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l90s0'>		} while (!LastInput);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>91</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l91s0'>		return listLineByLine;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeGetUserInputLine: 37</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>92</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>94</td><td>&nbsp;</td>
+      <td><pre class='comment'>//		// Don't close the scanner because doing so also closes System.in.  Do NOT uncomment the line below.</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>95</td><td>&nbsp;</td>
+      <td><pre class='comment'>//		//scanner.close();		</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>97</td><td>&nbsp;</td>
+      <td><pre class='comment'>	//method iterates over list of Playlist objects and calls for its visit method</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>98</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private static void InvokeValidator(ArrayList&lt;Playlist> masterListPlaylist) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>99</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l99s0'>		logger.info(">>invokeValidator()");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>101</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l101s0'>		System.out.println("\n==============================================================");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l102s0'>		System.out.println("Following report shows Objects created and corresponding errors:");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>103</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l103s0'>		System.out.println("==============================================================\n");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>104</td><td>&nbsp;</td>
+      <td><pre class='comment'>	    //iterate through all items</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>105</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l105s0'>	    for(int i = 0; i &lt; masterListPlaylist.size(); i++) {</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>106</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l106s0'>	    	masterListPlaylist.get(i).accept(new PlaylistElementVisitor());</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>107</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l107s0'>	    	masterListPlaylist.get(i).accept(new PlaylistFirstLineVisitor());</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>108</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l108s0'>	    	masterListPlaylist.get(i).accept(new PlaylistDurationVisitor());</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>109</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l109s0'>	    	masterListPlaylist.get(i).accept(new PlaylistURIVisitor());</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>110</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l110s0'>	    	masterListPlaylist.get(i).accept(new PlaylistDuplicateTagVisitor());</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>111</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l111s0'>	    	System.out.println("=================================================");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>112</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>114</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l114s0'>	    logger.info("&lt;&lt;invokeValidator()");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>115</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l115s0'>	}</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>117</td><td>&nbsp;</td>
+      <td><pre class='comment'>	//Process list of user URLs</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>118</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected static ArrayList&lt;Playlist> ProcessURLList(ArrayList&lt;String> inputURLList) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/5</span>
+        <span class='uncovered' onclick="showPath(this,'l119s0 l129s0 l124s1 l150s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l119s0 l129s0 l131s0 l133s0 l137s0 l141s0 l144s0 l124s1 l150s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l119s0 l129s0 l131s0 l133s0 l137s0 l141s0 l142s0 l124s1 l150s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l119s0 l129s0 l131s0 l133s0 l137s0 l138s0 l124s1 l150s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l119s0 l129s0 l131s0 l133s0 l134s0 l124s1 l150s0')">E: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l119s0'>		logger.info(">>ProcessURLList()");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>120</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l120s0'>		ArrayList&lt;Playlist> ListPlaylist = new ArrayList&lt;Playlist>();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>121</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l121s0'>		String URLString = null;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>122</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l122s0'>		PlaylistType result = null;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>123</td><td>&nbsp;</td>
+      <td><pre class='comment'>		//iterate over list of URL - detect if single of master - create objects accordingly</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>124</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l124s0'>		for (int i = 0; i &lt; inputURLList.size(); i++) {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x3</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>125</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l125s0'>			URLString = inputURLList.get(i);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>126</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l126s0'>			System.out.println("=================================================");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>127</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l127s0'>			logger.info("Info on URL: {}", URLString);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>128</td><td>&nbsp;</td>
+      <td><pre class='comment'>			//store URL as object only if it is valid (reachable)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>129</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>			<span id='l129s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>if (validateURL(URLString))</span> {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>130</td><td>&nbsp;</td>
+      <td><pre class='comment'>				//check if is single or master playlist</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>131</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l131s0'>				result = checkSingleorMaster(URLString);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>132</td><td>&nbsp;</td>
+      <td><pre class='comment'>				//create objects accordingly</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>133</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>				<span id='l133s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>if (result == PlaylistType.SINGLE)</span> {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>134</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l134s0'>					System.out.print("Creating a single playlist object: " + URLString + "\n");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>135</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l135s0'>					logger.debug("Creating single playlisty object: {}", URLString);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>136</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l136s0'>					ListPlaylist.add( new SinglePlaylist(URLString) );</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>137</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>				<span id='l137s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>}</span> else if (result == PlaylistType.MASTER) {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>138</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l138s0'>					System.out.printf("Creating a master playlist object: " + URLString + "\n");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>139</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l139s0'>					logger.debug("Creating master playlisty object: {}", URLString);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>140</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l140s0'>					ListPlaylist.add( new MasterPlaylist(URLString) );</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>141</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>				<span id='l141s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>}</span> else if (result == PlaylistType.NONE) {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>142</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l142s0'>					System.out.printf("URL header un-identified. Cannot categorize as either single or master playlist: " + URLString + "\n");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>143</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l143s0'>				} else {</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>144</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l144s0'>					logger.fatal("Cannot categorize URL as either single or master playlist: {}", URLString);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>145</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>				}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>146</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			};</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>147</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>149</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l149s0'>		logger.info("&lt;&lt;ProcessURLList()");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>150</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l150s0'>		return ListPlaylist;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>151</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>154</td><td>&nbsp;</td>
+      <td><pre class='comment'>	// validateURL returns false if any of the following cases:</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>155</td><td>&nbsp;</td>
+      <td><pre class='comment'>	// - MalformedURLException</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>156</td><td>&nbsp;</td>
+      <td><pre class='comment'>	// - IOException</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>157</td><td>&nbsp;</td>
+      <td><pre class='comment'>	// - REsponse code is not OK --> It is not 200</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>158</td><td>&nbsp;</td>
+      <td><pre class='comment'>	// - Content type is not correct</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>159</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected static Boolean validateURL(String UserURL) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/8</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l194s0 l198s0 l202s0 l206s0 l207s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l194s0 l198s0 l202s0 l203s0 l206s0 l207s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l194s0 l194s1 l198s0 l202s0 l206s0 l207s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l194s0 l194s1 l198s0 l202s0 l203s0 l206s0 l207s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l194s0 l194s1 l195s0 l202s0 l206s0 l207s0')">E: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l194s0 l194s1 l195s0 l202s0 l203s0 l206s0 l207s0')">F: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l192s0 l202s0 l206s0 l207s0')">G: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l160s0 l191s0 l192s0 l202s0 l203s0 l206s0 l207s0')">H: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>160</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l160s0'>		logger.info(">>validateURL()");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>161</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l161s0'>		int ResponseCode = 0;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>162</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l162s0'>		String ContentType = null;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>163</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l163s0'>		boolean validInput1 = false;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>165</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l165s0'>		System.out.println("Playlist File name: " + UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>167</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		try { </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>168</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l168s0'>			URL objURL = new URL(UserURL); // strURL is the string form of URL</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>169</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l169s0'>			HttpURLConnection con = (HttpURLConnection) objURL.openConnection();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>170</td><td>&nbsp;</td>
+      <td><pre class='comment'>			// HTTP GET response code</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>171</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l171s0'>			ResponseCode = con.getResponseCode();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>172</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l172s0'>			logger.info("Response Code is: {}", ResponseCode);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>173</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l173s0'>			System.out.println("Response Code is: " + ResponseCode);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>174</td><td>&nbsp;</td>
+      <td><pre class='comment'>			// HTTP GET content type</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>175</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l175s0'>			ContentType = con.getContentType();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>176</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l176s0'>			logger.info("Content Type is: {}", ContentType);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>177</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l177s0'>			System.out.println("Content Type is: " + ContentType);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>178</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l178s0'>		} </pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>179</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l179s0'>		catch (MalformedURLException e) { </pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>180</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l180s0'>			logger.error("Bad UserURL is: {}", UserURL);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>181</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l181s0'>			System.err.println("MalformedURLException error. Please enter a valid URL.");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>182</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l182s0'>			return validInput1;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>183</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>184</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l184s0'>		catch (IOException e) { </pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>185</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l185s0'>			logger.error("IO exception error");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>186</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l186s0'>			System.err.println("IO exception error. Problems connecting to URL.");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>187</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l187s0'>			return validInput1;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>188</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} </pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>190</td><td>&nbsp;</td>
+      <td><pre class='comment'>		//Checking results from HTTP GET</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>191</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>		<span id='l191s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>if (ResponseCode != 200 )</span> {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>192</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l192s0'>			logger.error("URL not available - reponse code not 200.");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>193</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l193s0'>			System.err.println("URL not available - Please enter a valid and available URL.");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>194</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>		<span id='l194s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>}</span> else <span id='l194s1' title='Executions: 2' class='covered cp' onclick='showHide(this,1)'>if ((!ContentType.equals("application/vnd.apple.mpegurl"))</span>&&(!ContentType.equals("application/x-mpegURL"))) {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 28</li>
+        </ol>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>195</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l195s0'>			logger.error("Content Type is not valid.");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>196</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l196s0'>			System.err.println("Content Type is not valid - Please enter a valid URL.");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>197</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l197s0'>		} else {</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>198</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l198s0'>			validInput1 = true;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>199</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>201</td><td>&nbsp;</td>
+      <td><pre class='comment'>		//Will not store incorrect URL as object - discarding</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>202</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>		<span id='l202s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>if (!validInput1)</span>{</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>203</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l203s0'>			logger.error("URL entry not valid - Will not store incorrect URL as object. URL: {}", UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>204</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l204s0'>			System.err.println("URL entry not valid - Will not store incorrect URL as object. URL:" + UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>205</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>206</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l206s0'>		logger.info("&lt;&lt;validateURL()");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>207</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l207s0'>		return validInput1;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analyzeValidateURL: 27, 28</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>208</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>210</td><td>&nbsp;</td>
+      <td><pre class='comment'>	//decide what kind of object is it. In case it cannot be recognized, then assume it is single playlist</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>211</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	protected static PlaylistType checkSingleorMaster (String UserURL){</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>3</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
+        <span class='uncovered' onclick="showPath(this,'l212s0 l225s0 l237s0 l243s0 l248s0 l259s0 l261s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l212s0 l225s0 l237s0 l238s0 l248s0 l259s0 l261s0')">B: 1</span>
+        <span class='covered' onclick="showPath(this,'l212s0 l225s0 l226s0 l248s0 l259s0 l261s0')">C: 2</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>212</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l212s0'>		logger.info(">>checkSingleOrMaster()");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>214</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l214s0'>		PlaylistType result = null;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>215</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l215s0'>		String inputLine = null;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>217</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>218</td><td>&nbsp;</td>
+      <td><pre class='comment'>			//open URL</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>219</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l219s0'>			URL objURL = new URL(UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>220</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l220s0'>			URLConnection urlcon = objURL.openConnection();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>221</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l221s0'>	        BufferedReader in = new BufferedReader(new InputStreamReader(urlcon.getInputStream()));</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>223</td><td>&nbsp;</td>
+      <td><pre class='comment'>	        //check if first line is "#EXTM3U" (single) or "" (master)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>224</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l224s0'>	        String firstLine = in.readLine();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>225</td><td class='count'>5</td>
+      <td><pre class='prettyprint jmp'>	        <span id='l225s0' title='Executions: 5' class='covered cp' onclick='showHide(this,0)'>if (firstLine.equals("#EXTM3U"))</span> {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x2</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 45, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>226</td><td class='count'>92</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l226s0'>	        	while ((inputLine = in.readLine()) != null) {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x46</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44x44, 45x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>227</td><td class='count'>86</td>
+      <td><pre class='prettyprint jmp'>	        		<span id='l227s0' title='Executions: 86' class='covered cp' onclick='showHide(this,0)'>if (inputLine.matches("(.*)#EXT-X-STREAM-INF(.*)"))</span> {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57x43</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44x42, 45</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>228</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l228s0'>	    	        	logger.info("Master playlist detected - Found record: \"#EXT-X-STREAM-INF\" ");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 45</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>229</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l229s0'>	    				System.out.println("Master playlist detected - Found record is: \"#EXT-X-STREAM-INF\" for URL:" + UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 45</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>230</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l230s0'>	    				return PlaylistType.MASTER;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 45</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>231</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	    			}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>232</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	        	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>234</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l234s0'>	        	logger.info("Single playlist detected - First record is \"#EXTM3U\" for URL {}", UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>235</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l235s0'>				System.out.println("Single playlist detected - First record is " + firstLine + " for URL:" + UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>236</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l236s0'>				result = PlaylistType.SINGLE;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>237</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'>	        <span id='l237s0' title='Executions: 2' class='covered cp' onclick='showHide(this,0)'>}</span>   else if (firstLine.matches(".*EXT.*")) {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>238</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l238s0'>	        	logger.info("Neither Single or Master playlist detected - First record is {}", firstLine );</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>239</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l239s0'>				System.out.println("Neither Single or Master playlist detected - First record is " + firstLine + " for URL: " + UserURL);</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>240</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l240s0'>				System.out.println("Will assume it to be a Single playlist");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>241</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l241s0'>				result = PlaylistType.SINGLE;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>242</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l242s0'>	        } 	else {</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>243</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l243s0'>	        	logger.error("Neither Single or Master playlist detected - First record is {}", firstLine );</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>244</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l244s0'>				System.err.println("Neither Single or Master playlist detected - First record is " + firstLine + " for URL: " + UserURL);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>245</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l245s0'>				result = PlaylistType.NONE;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>246</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>248</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l248s0'>	        in.close();</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>249</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l249s0'>		}</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>250</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l250s0'>			catch (MalformedURLException e) { </pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>251</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l251s0'>			logger.error("printContentValidURL - Bad UserURL is: {}", UserURL);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>252</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l252s0'>			System.err.println("MalformedURLException error. Please enter a valid URL.");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>253</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		} </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>254</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l254s0'>			catch (IOException e) { </pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>255</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l255s0'>			logger.error("printContentValidURL - IO exception error");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>256</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l256s0'>			System.err.println("IO exception error. Problems connecting to URL.");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>257</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>259</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l259s0'>		logger.info("&lt;&lt;checkSingleOrMaster()");</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>261</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l261s0'>		return result;</pre>
+        <ol style='display:none'>
+          <li>edu.psgv.sweng861.TestHLS3#analizeProcessURLList: 57</li>
+          <li>edu.psgv.sweng861.TestHLS3#analizeSingleOrMaster: 44, 46</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>263</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>266</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

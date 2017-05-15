@@ -1,0 +1,94 @@
+13:39:07.476 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>main()
+13:39:07.477 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+13:39:12.756 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 496
+13:39:12.757 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+13:39:12.757 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>analyzeNumber()
+13:39:12.757 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 1
+13:39:12.758 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 2
+13:39:12.758 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 4
+13:39:12.758 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 8
+13:39:12.758 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 16
+13:39:12.759 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 31
+13:39:12.759 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 62
+13:39:12.759 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 124
+13:39:12.759 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 248
+13:39:12.761 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - result: PERFECT
+13:39:12.761 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<analyzeNumber()
+13:39:12.762 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+13:39:16.497 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 497
+13:39:16.497 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+13:39:16.497 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>analyzeNumber()
+13:39:16.497 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 1
+13:39:16.497 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 7
+13:39:16.498 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 71
+13:39:16.498 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - result: ORDINARY
+13:39:16.498 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<analyzeNumber()
+13:39:16.498 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+13:39:19.337 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 499
+13:39:19.337 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+13:39:19.338 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>analyzeNumber()
+13:39:19.338 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 1
+13:39:19.338 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - result: PRIME
+13:39:19.338 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<analyzeNumber()
+13:39:19.338 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+13:39:21.138 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 0
+13:39:21.138 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+13:39:21.139 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<main()
+14:07:56.226 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>main()
+14:07:56.227 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+14:08:01.352 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 496
+14:08:01.352 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+14:08:01.352 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>analyzeNumber()
+14:08:01.352 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 1
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 2
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 4
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 8
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 16
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 31
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 62
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 124
+14:08:01.353 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 248
+14:08:01.353 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - result: PERFECT
+14:08:01.353 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<analyzeNumber()
+14:08:01.354 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+14:08:06.689 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 0
+14:08:06.689 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+14:08:06.690 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<main()
+14:08:48.281 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>main()
+14:08:48.282 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+00:10:30.738 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>main()
+00:10:30.740 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+00:10:37.424 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 496
+00:10:37.425 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+00:10:37.425 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>analyzeNumber()
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 1
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 2
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 4
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 8
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 16
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 31
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 62
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 124
+00:10:37.425 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 248
+00:10:37.426 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - result: PERFECT
+00:10:37.426 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<analyzeNumber()
+00:10:37.427 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+00:10:39.522 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 497
+00:10:39.522 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+00:10:39.522 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>analyzeNumber()
+00:10:39.522 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 1
+00:10:39.522 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 7
+00:10:39.522 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 71
+00:10:39.522 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - result: ORDINARY
+00:10:39.522 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<analyzeNumber()
+00:10:39.523 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+00:10:41.052 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 499
+00:10:41.052 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+00:10:41.052 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>analyzeNumber()
+00:10:41.053 [main] DEBUG edu.psgv.sweng861.PrimeOrPerfect - factor: 1
+00:10:41.053 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - result: PRIME
+00:10:41.053 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<analyzeNumber()
+00:10:41.053 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - >>getNumber()
+00:10:41.655 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - input number: 0
+00:10:41.655 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<getNumber()
+00:10:41.655 [main] INFO  edu.psgv.sweng861.PrimeOrPerfect - <<main()
